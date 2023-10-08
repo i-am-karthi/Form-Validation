@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-up Form</title>
+    <link rel="stylesheet" href="formstyle.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Sign-up Form</h2>
+        <form id="signupForm">
+            <div class="form-group">
+                <label for="email">User Email</label>
+                <input type="text" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" id="sigh">Sign Up</button>
+        </form>
+    </div>
+    
+    <script>
+        document.getElementById("signupForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const e = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const p= /^(?=.*[A-Z])(?=.*[0-9])(?=.*[\W_]).{8,}$/;
+            if (!e.test(email)) {
+                alert("Invalid email address. Please enter a valid email.");
+            } else if (!p.test(password)) {
+                alert("Invalid password.It should contains:\n" +
+                      "1. At least 8 characters\n" +
+                      "2. At least one uppercase letter\n" +
+                      "3. At least one special character\n" +
+                      "4. At least one number");
+            } else {
+                alert("Sign-up Successful!");
+            }
+        });
+    </script>
+</body>
+</html>
